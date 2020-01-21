@@ -366,7 +366,7 @@ namespace TickTackToe
     
     // Возможные состояния ячейки
     public enum CellType {
-        O, X, _
+       _, O, X
     }
 
     // Типы отрезков

@@ -6,14 +6,22 @@ namespace TickTackToe
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Input size:");
+            int size = 0;
+            try
+            {
+                size = Convert.ToUInt16(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Incorrect size");
+                Console.ReadKey();
+                return;
+            }
+
             var field = new Field();
-            field.SetField(new CellType[,] {
-                {CellType.X, CellType.O, CellType._, CellType._, CellType._},
-                {CellType._, CellType.X, CellType._, CellType._, CellType._},
-                {CellType._, CellType._, CellType._, CellType._, CellType._},
-                {CellType._, CellType._, CellType._, CellType._, CellType._},
-                {CellType._, CellType._, CellType._, CellType._, CellType._}
-            });
+            field.SetField(new CellType[size, size]);
+
             Console.WriteLine("Original field:");
             Console.WriteLine(field.ToString());
 
@@ -33,10 +41,11 @@ namespace TickTackToe
                 field = Calculation.SetMove(field, cell, nextPlayer);
 
                 Console.WriteLine(field.ToString());
-                
+
 
             }
             Console.ReadLine();
         }
     }
 }
+
